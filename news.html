@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Новости дня</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f9fa;
+      padding: 2rem;
+      color: #333;
+    }
+    .news-box {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      color: #007bff;
+    }
+    .news-item {
+      margin-top: 1rem;
+    }
+    .news-date {
+      color: #888;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="news-box">
+    <h2>Новости дня</h2>
+    <div id="newsContent" class="news-item"></div>
+  </div>
+
+  <script>
+    const newsData = [
+      {
+        date: "2025-04-17",
+        title: "Запуск проекта",
+        content: "Сегодня мы запускаем новый проект, который изменит подход к образованию!"
+      },
+      {
+        date: "2025-04-18",
+        title: "Технологические открытия",
+        content: "Учёные анонсировали новую разработку в области квантовых вычислений."
+      },
+      {
+        date: "2025-04-19",
+        title: "Обновление платформы",
+        content: "Наш сайт получил обновление интерфейса и улучшенную скорость загрузки."
+      }
+      // Добавь сюда больше новостей заранее
+    ];
+
+    const today = new Date().toISOString().split("T")[0];
+    const newsToday = newsData.find(n => n.date === today);
+
+    const newsContent = document.getElementById("newsContent");
+
+    if (newsToday) {
+      newsContent.innerHTML = `
+        <h3>${newsToday.title}</h3>
+        <p class="news-date">${newsToday.date}</p>
+        <p>${newsToday.content}</p>
+      `;
+    } else {
+      newsContent.innerHTML = `<p>Сегодня новостей нет. Загляните завтра!</p>`;
+    }
+  </script>
+
+</body>
+</html>
