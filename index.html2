@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Современный Интерактивный Сайт</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      background: linear-gradient(to right, #f8f9fa, #e9ecef);
+      color: #333;
+      overflow-x: hidden;
+    }
+    header, footer {
+      background: #343a40;
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    nav {
+      background: #495057;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1rem 0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+      cursor: pointer;
+    }
+    nav a:hover {
+      color: #ffc107;
+    }
+    .container {
+      padding: 3rem 1rem;
+      max-width: 900px;
+      margin: auto;
+      animation: fadeIn 1s ease-in;
+    }
+    section {
+      display: none;
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      animation: slideIn 0.5s ease;
+    }
+    section.active {
+      display: block;
+    }
+    h2 {
+      color: #495057;
+    }
+    ul {
+      list-style: none;
+      padding-left: 1rem;
+    }
+    ul li::before {
+      content: "\\f054";
+      font-family: "Font Awesome 5 Free";
+      margin-right: 0.5rem;
+      font-weight: 900;
+      color: #17a2b8;
+    }
+    footer {
+      font-size: 0.9rem;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0 }
+      to { opacity: 1 }
+    }
+    @keyframes slideIn {
+      from { transform: translateY(20px); opacity: 0 }
+      to { transform: translateY(0); opacity: 1 }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1><i class="fas fa-globe"></i> Добро пожаловать</h1>
+    <p>Интерактивный сайт с современным дизайном</p>
+  </header>
+
+  <nav>
+    <a data-target="about"><i class="fas fa-info-circle"></i> О сайте</a>
+    <a data-target="info"><i class="fas fa-lightbulb"></i> Информация</a>
+    <a data-target="contact"><i class="fas fa-envelope"></i> Контакты</a>
+  </nav>
+
+  <div class="container">
+    <section id="about" class="active">
+      <h2><i class="fas fa-info-circle"></i> О сайте</h2>
+      <p>Этот сайт создан для публикации полезной информации и удобной навигации с помощью современного дизайна и анимации.</p>
+    </section>
+
+    <section id="info">
+      <h2><i class="fas fa-lightbulb"></i> Информация</h2>
+      <ul>
+        <li>Обновления и новости</li>
+        <li>Образовательные статьи</li>
+        <li>Интересные факты</li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2><i class="fas fa-envelope"></i> Контакты</h2>
+      <p>Свяжитесь с нами: <a href="mailto:example@mail.com">example@mail.com</a></p>
+    </section>
+  </div>
+
+  <footer>
+    <p>© 2025 Современный сайт | Все права защищены</p>
+  </footer>
+
+  <script>
+    const links = document.querySelectorAll("nav a");
+    const sections = document.querySelectorAll("section");
+
+    links.forEach(link => {
+      link.addEventListener("click", () => {
+        const targetId = link.getAttribute("data-target");
+
+        sections.forEach(section => {
+          section.classList.remove("active");
+        });
+
+        document.getElementById(targetId).classList.add("active");
+      });
+    });
+  </script>
+
+</body>
+</html>
